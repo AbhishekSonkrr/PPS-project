@@ -1,4 +1,3 @@
-# PPS-project
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -56,4 +55,4 @@ int main() {
     printf("\nTime taken: %f seconds\n", time_used);
 
     return 0;
-} Shell sorting
+}
