@@ -1,14 +1,21 @@
-#include "sort_utils.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <stdint.h>
 #include <string.h>
+#include "sort.h"
+#include <bits/time.h>
+#include <linux/time.h>
 
 #define SIZE 11
 
+/* small, inlinable swap to reduce call overhead */
 static inline void swap_int(int *a, int *b) {
     int t = *a; *a = *b; *b = t;
 }
 
-void selectionSort(int arr[], int n) {
+/* slightly optimized selection sort: use local variables to reduce memory refs */
+static void selectionSort(int arr[], int n) {
     for (int i = 0; i < n - 1; ++i) {
         int minIndex = i;
         int minVal = arr[i];
@@ -20,6 +27,7 @@ void selectionSort(int arr[], int n) {
             }
         }
         if (minIndex != i) {
+            /* place minVal at i and move old arr[i] to minIndex */
             arr[minIndex] = arr[i];
             arr[i] = minVal;
         }
@@ -34,7 +42,13 @@ void printArray(int arr[], int n) {
     putchar('\n');
 }
 
-long long timed_avg_ns(void (*sortfn)(int[], int), int src[], int n, int reps) {
+/* generate once (do NOT call srand() here) */
+void generateRandomArray(int arr[], int n) {
+    for (int i = 0; i < n; ++i) arr[i] = rand() % 200;
+}
+
+/* time sorting a copy repeated 'reps' times, return average ns per run */
+static long long timed_avg_ns(void (*sortfn)(int[], int), int src[], int n, int reps) {
     int buf[SIZE];
     struct timespec t1, t2;
     clock_gettime(CLOCK_MONOTONIC, &t1);
@@ -46,4 +60,9 @@ long long timed_avg_ns(void (*sortfn)(int[], int), int src[], int n, int reps) {
     long long total_ns = (long long)(t2.tv_sec - t1.tv_sec) * 1000000000LL
                        + (t2.tv_nsec - t1.tv_nsec);
     return total_ns / reps;
+}
+
+int main(void) {
+     sortDemo("Selection Sort", selectionSort, timed_avg_ns);
+    return 0;
 }
