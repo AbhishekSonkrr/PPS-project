@@ -1,0 +1,17 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "defines": [],
+            "compilerPath": "/usr/bin/clang",
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "linux-clang-x64",
+            "includePath": [
+                "/home/abhishek/Desktop/PPS-project/new version/sort.h",
+                "${workspaceFolder}/new version/**"
+            ]
+        }
+    ],
+    "version": 4
+}
