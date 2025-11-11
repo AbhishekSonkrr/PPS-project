@@ -1,16 +1,10 @@
 # Build artifacts
+
+# Build artifacts
 /build/
 /*.o
 /*.exe
 /*.out
-
-# Binaries built by Make
-shellSort
-selectionSort
-heapsort
-quickSort
-bubbleSort
-straightInsertionSort
 
 # Editor directories
 .vscode/
