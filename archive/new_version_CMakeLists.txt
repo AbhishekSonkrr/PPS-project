@@ -1,0 +1,28 @@
+cmake_minimum_required(VERSION 3.10)
+project(sorters C)
+
+set(CMAKE_C_STANDARD 11)
+set(CMAKE_C_STANDARD_REQUIRED ON)
+
+# Put sources here. Each source defines a small executable that uses sort_main.h
+set(SORT_SOURCES
+    shellSort.c
+    selectionSort.c
+    heapsort.c
+    quickSort.c
+    bubbleSort.c
+    straightInstertionSort.c
+)
+
+foreach(src IN LISTS SORT_SOURCES)
+    # strip extension to form executable name
+    get_filename_component(name ${src} NAME_WE)
+    # rename straightInstertionSort -> straightInsertionSort target name
+    if(name STREQUAL "straightInstertionSort")
+        set(target_name "straightInsertionSort")
+    else()
+        set(target_name ${name})
+    endif()
+    add_executable(${target_name} ${src})
+    target_include_directories(${target_name} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+endforeach()

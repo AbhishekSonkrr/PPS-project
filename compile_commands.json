@@ -1,0 +1,38 @@
+[
+{
+  "directory": "/home/abhishek/Desktop/PPS-project/build",
+  "command": "/usr/bin/cc  -I/home/abhishek/Desktop/PPS-project/include -std=gnu11 -o CMakeFiles/bubbleSort.dir/src/bubbleSort.c.o -c /home/abhishek/Desktop/PPS-project/src/bubbleSort.c",
+  "file": "/home/abhishek/Desktop/PPS-project/src/bubbleSort.c",
+  "output": "CMakeFiles/bubbleSort.dir/src/bubbleSort.c.o"
+},
+{
+  "directory": "/home/abhishek/Desktop/PPS-project/build",
+  "command": "/usr/bin/cc  -I/home/abhishek/Desktop/PPS-project/include -std=gnu11 -o CMakeFiles/heapsort.dir/src/heapsort.c.o -c /home/abhishek/Desktop/PPS-project/src/heapsort.c",
+  "file": "/home/abhishek/Desktop/PPS-project/src/heapsort.c",
+  "output": "CMakeFiles/heapsort.dir/src/heapsort.c.o"
+},
+{
+  "directory": "/home/abhishek/Desktop/PPS-project/build",
+  "command": "/usr/bin/cc  -I/home/abhishek/Desktop/PPS-project/include -std=gnu11 -o CMakeFiles/quickSort.dir/src/quickSort.c.o -c /home/abhishek/Desktop/PPS-project/src/quickSort.c",
+  "file": "/home/abhishek/Desktop/PPS-project/src/quickSort.c",
+  "output": "CMakeFiles/quickSort.dir/src/quickSort.c.o"
+},
+{
+  "directory": "/home/abhishek/Desktop/PPS-project/build",
+  "command": "/usr/bin/cc  -I/home/abhishek/Desktop/PPS-project/include -std=gnu11 -o CMakeFiles/selectionSort.dir/src/selectionSort.c.o -c /home/abhishek/Desktop/PPS-project/src/selectionSort.c",
+  "file": "/home/abhishek/Desktop/PPS-project/src/selectionSort.c",
+  "output": "CMakeFiles/selectionSort.dir/src/selectionSort.c.o"
+},
+{
+  "directory": "/home/abhishek/Desktop/PPS-project/build",
+  "command": "/usr/bin/cc  -I/home/abhishek/Desktop/PPS-project/include -std=gnu11 -o CMakeFiles/shellSort.dir/src/shellSort.c.o -c /home/abhishek/Desktop/PPS-project/src/shellSort.c",
+  "file": "/home/abhishek/Desktop/PPS-project/src/shellSort.c",
+  "output": "CMakeFiles/shellSort.dir/src/shellSort.c.o"
+},
+{
+  "directory": "/home/abhishek/Desktop/PPS-project/build",
+  "command": "/usr/bin/cc  -I/home/abhishek/Desktop/PPS-project/include -std=gnu11 -o CMakeFiles/straightInsertionSort.dir/src/straightInstertionSort.c.o -c /home/abhishek/Desktop/PPS-project/src/straightInstertionSort.c",
+  "file": "/home/abhishek/Desktop/PPS-project/src/straightInstertionSort.c",
+  "output": "CMakeFiles/straightInsertionSort.dir/src/straightInstertionSort.c.o"
+}
+]
