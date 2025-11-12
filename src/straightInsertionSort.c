@@ -1,6 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+// filepath: /home/abhishek/Desktop/PPS-project/src/straightInsertionSort.c
+// Implementation moved here from the misspelled file `straightInstertionSort.c`
 
 #define SIZE 11
 #define SORT_FUNC straightInsertionSort
@@ -17,5 +16,3 @@ void straightInsertionSort(int arr[], int n) {
         arr[j + 1] = key;
     }
 }
-
-// No local main — `sort_main.h` supplies a common main that will call straightInsertionSort

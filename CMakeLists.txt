@@ -7,18 +7,20 @@ set(CMAKE_C_STANDARD_REQUIRED ON)
 set(SRC_DIR ${CMAKE_SOURCE_DIR}/src)
 set(INC_DIR ${CMAKE_SOURCE_DIR}/include)
 
-file(GLOB SORT_SOURCES
-    "${SRC_DIR}/*.c"
+# Explicit list of executable targets (keeps the CMake file small and predictable)
+set(TARGETS
+    bubbleSort
+    heapsort
+    quickSort
+    selectionSort
+    shellSort
+    straightInsertionSort
 )
 
-foreach(src IN LISTS SORT_SOURCES)
-    get_filename_component(name ${src} NAME_WE)
-    # map straightInstertionSort -> straightInsertionSort
-    if(name STREQUAL "straightInstertionSort")
-        set(target_name "straightInsertionSort")
-    else()
-        set(target_name ${name})
+foreach(t IN LISTS TARGETS)
+    set(src "${SRC_DIR}/${t}.c")
+    if(EXISTS ${src})
+        add_executable(${t} ${src})
+        target_include_directories(${t} PRIVATE ${INC_DIR})
     endif()
-    add_executable(${target_name} ${src})
-    target_include_directories(${target_name} PRIVATE ${INC_DIR})
 endforeach()

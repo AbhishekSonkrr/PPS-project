@@ -77,3 +77,14 @@ Badge (CI)
 - After you push this branch, you can add a CI status badge using the GitHub Actions workflow name `CI` and branch `main`.
 
 If you'd like, I can add the CI badge to this README automatically after you push the commits to `origin/main`.
+
+## Project organization updates
+
+I reorganized source files to fix a misspelled filename and provide a clear layout under `src/`:
+
+- Added `src/straightInsertionSort.c` (correct spelling) with the insertion sort implementation.
+- Converted the old `src/straightInstertionSort.c` into a small wrapper that forwards to the corrected implementation to keep backwards compatibility.
+
+All other algorithm implementations remain in `src/` and the build files were left intact — the top-level `CMakeLists.txt` already maps the misspelled name to the correct target (`straightInsertionSort`).
+
+If you'd like, I can also remove the legacy `archive/` folder contents or update the Makefile to match the cleaned layout.

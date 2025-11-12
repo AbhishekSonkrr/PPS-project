@@ -1,4 +1,3 @@
-
 CC = gcc
 CFLAGS = -std=c11 -O2 -Wall -Iinclude
 
@@ -24,9 +23,8 @@ quickSort: src/quickSort.c include/sort_main.h
 bubbleSort: src/bubbleSort.c include/sort_main.h
 	$(CC) $(CFLAGS) src/bubbleSort.c -o bubbleSort
 
-straightInsertionSort: src/straightInstertionSort.c include/sort_main.h
-	$(CC) $(CFLAGS) src/straightInstertionSort.c -o straightInsertionSort
+straightInsertionSort: src/straightInsertionSort.c include/sort_main.h
+	$(CC) $(CFLAGS) src/straightInsertionSort.c -o straightInsertionSort
 
 clean:
 	rm -f $(BINS)
-
