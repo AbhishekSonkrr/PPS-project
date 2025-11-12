@@ -37,19 +37,7 @@ Debugging in CLion (quick tips)
 
 Automated run & verify script
 
-I added a small helper script `run_all.sh` that:
-
-- builds the project (CMake build directory),
-- runs each sorter executable, and
-- verifies that each printed "Sorted ... Array" lines are non-decreasing.
-
-Run it from the repository root:
-
-```bash
-./run_all.sh
-```
-
-The script prints a per-executable PASS/FAIL summary. It's a quick smoke-test you can run after editing or benchmarking.
+(The helper script `run_all.sh` was removed from this branch. CI now only performs a build step.)
 
 How the unified main works
 - `include/sort_main.h` provides a common `main()` which expects each sorter source to `#define SORT_FUNC <name>` before including the header. This keeps all mains consistent and avoids duplication.

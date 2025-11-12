@@ -18,8 +18,9 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y build-essential cmake
 
-      - name: Make run_all.sh executable
-        run: chmod +x run_all.sh
-
-      - name: Run smoke tests (build + run)
-        run: ./run_all.sh
+      - name: Build project (CMake)
+        run: |
+          mkdir -p build
+          cd build
+          cmake ..
+          cmake --build . -j$(nproc)

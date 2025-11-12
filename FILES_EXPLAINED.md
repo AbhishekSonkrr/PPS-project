@@ -13,7 +13,7 @@ Ye file chhoti aur seedhi bhaasha mein batati hai ki har file kya karti hai. Aga
   Kaam: Simple `make` command se binaries banane ka tarika. Agar tum CMake use nahi karna chahte to `make` se easily build kar sakte ho.
 
 - `run_all.sh`  
-  Kaam: Ek helper script — pehle build karta hai (CMake se), phir saare sort programs chalata hai aur check karta hai ki output sorted hai ya nahi.
+  Kaam: (Removed) Previously a helper script that built the project and ran smoke tests.
 
 - `README.md`  
   Kaam: Project ka short guide — kaise build/run karein, aur `sort_main.h` ka use kaise hota hai.
