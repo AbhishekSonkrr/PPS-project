@@ -2,16 +2,33 @@
     "files.exclude": {
         "**/.git": true,
         "**/build": true,
+        "**/build/**": true,
+        "**/bin": true,
+        "**/bin/**": true,
         "**/node_modules": true,
-        "**/.idea": true
+        "**/.idea": true,
+        "**/archive": true,
+        "**/archive/**": true,
+        "**/CMakeFiles": true,
+        "**/CMakeFiles/**": true
     },
     "search.exclude": {
         "**/build": true,
-        "**/node_modules": true
+        "**/build/**": true,
+        "**/bin": true,
+        "**/bin/**": true,
+        "**/node_modules": true,
+        "**/archive": true,
+        "**/archive/**": true,
+        "**/CMakeFiles": true,
+        "**/CMakeFiles/**": true
     },
     "files.watcherExclude": {
         "**/build/**": true,
-        "**/node_modules/**": true
+        "**/node_modules/**": true,
+        "**/bin/**": true,
+        "**/archive/**": true,
+        "**/CMakeFiles/**": true
     },
     "C_Cpp.default.includePath": [
         "${workspaceFolder}/include",
