@@ -43,7 +43,7 @@ How the unified main works
 - `include/sort_main.h` provides a common `main()` which expects each sorter source to `#define SORT_FUNC <name>` before including the header. This keeps all mains consistent and avoids duplication.
 
 CI
--- A small GitHub Actions workflow runs the project's `run_all.sh` on push/PR to `main`. You can find it at `.github/workflows/ci.yml`.
+- A small GitHub Actions workflow builds the project on push/PR to `main`. You can find it at `.github/workflows/ci.yml`.
 
 Quick local commands
 
@@ -53,7 +53,8 @@ mkdir -p build && cd build
 cmake .. && cmake --build .
 
 # run the smoke tests from repository root
-./run_all.sh
+# run individual executables from the build directory, for example:
+./build/quickSort
 ```
 
 CLion / Arch notes (brief)
