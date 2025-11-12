@@ -97,10 +97,14 @@ make clean
 make -j$(nproc)
 ```
 
-Run smoke tests (build karega aur sab executables chalake check karega):
+Run smoke tests: build the project and run the executables manually (the helper script was removed in this branch):
 
 ```bash
-./run_all.sh
+# build first
+mkdir -p build && cd build
+cmake .. && cmake --build .
+# then run any executable from build/ manually, for example:
+./build/quickSort
 ```
 
 ---
@@ -108,6 +112,6 @@ Run smoke tests (build karega aur sab executables chalake check karega):
 ## Simple suggestions (jo main kar sakta hoon)
 
 - `.gitignore` add kar doon (build folders, binaries, compile_commands.json).
-- GitHub Actions add kar doon jo `./run_all.sh` chalaye on push — taaki auto-check ho jaye.
+- GitHub Actions add kar doon jo project ko build kare on push — taaki auto-check ho jaye.
 - `archive/` agar nahi chahiye toh main hata doon.
 
