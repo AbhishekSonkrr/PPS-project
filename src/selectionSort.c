@@ -1,10 +1,5 @@
-// #include <stdio.h>
-// #include <stdlib.h>
-// #include <string.h>
-
-// #define SIZE 11
-// #define SORT_FUNC selectionSort
-// #include "sort_main.h"
+#include <sort.h>
+#include <stdio.h>
 
 void selectionSort(int arr[], int n) {
     for (int i = 0; i < n - 1; ++i) {

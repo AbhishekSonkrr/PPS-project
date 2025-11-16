@@ -1,10 +1,5 @@
-// #include <stdio.h>
-// #include <stdlib.h>
-// #include <string.h>
-
-// #define SIZE 11
-// #define SORT_FUNC heapSort
-// #include "sort_main.h"
+#include <sort.h>
+#include <stdio.h>
 
 /* Swap helper */
 static void swap_int(int *a, int *b) {

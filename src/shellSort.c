@@ -1,9 +1,5 @@
-// #include <stdio.h>
-// #include <stdlib.h>
-// #include <time.h>
-// #define SIZE 11
-// #define SORT_FUNC shell_sort
-// #include "sort_main.h"
+#include <stdio.h>
+#include <sort.h>
 
 // Shell Sort implementation
 void shell_sort(int arr[], int size) {
@@ -20,4 +16,4 @@ void shell_sort(int arr[], int size) {
     }
 }
 
-// No local main here — `sort_main.h` provides a common main.
+

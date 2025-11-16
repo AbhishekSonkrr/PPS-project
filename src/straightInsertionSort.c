@@ -1,9 +1,5 @@
-// filepath: /home/abhishek/Desktop/PPS-project/src/straightInsertionSort.c
-// Implementation moved here from the misspelled file `straightInstertionSort.c`
-
-// #define SIZE 11
-// #define SORT_FUNC straightInsertionSort
-// #include "sort_main.h"
+#include<stdio.h>
+#include <sort.h>
 
 void straightInsertionSort(int arr[], int n) {
     for (int i = 1; i < n; ++i) {
