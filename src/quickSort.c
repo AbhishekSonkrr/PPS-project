@@ -1,10 +1,10 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+// #include <stdio.h>
+// #include <stdlib.h>
+// #include <string.h>
 
-#define SIZE 11
-#define SORT_FUNC quickSortWrapper
-#include "sort_main.h"
+// #define SIZE 11
+// #define SORT_FUNC quickSortWrapper
+// #include "sort_main.h"
 
 // Partition function for Quick Sort
 static int partition(int arr[], int low, int high) {
