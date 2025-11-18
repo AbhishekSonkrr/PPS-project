@@ -1,5 +1,5 @@
-#include<stdio.h>
-#include <sort.h>
+/* insertion.c - straight insertion sort implementation */
+#include "sorts.h"
 
 void straightInsertionSort(int arr[], int n) {
     for (int i = 1; i < n; ++i) {

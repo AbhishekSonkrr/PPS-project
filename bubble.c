@@ -1,7 +1,7 @@
-#include <sort.h>
+/* bubble.c - bubble sort implementation */
 #include <stdio.h>
+#include "sorts.h"
 
-// BUBBLE SORT LOGIC
 void bubbleSort(int arr[], int n)
 {
     for (int i = 0; i < n - 1; i++)
@@ -13,11 +13,7 @@ void bubbleSort(int arr[], int n)
                 int temp = arr[j];
                 arr[j] = arr[j + 1];
                 arr[j + 1] = temp;
-                
             }
-        } 
-        
+        }
     }
 }
-
-/*TO GENERATE RANDOM ARRAY*/

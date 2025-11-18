@@ -1,7 +1,6 @@
-#include <stdio.h>
-#include <sort.h>
+/* shell.c - shell sort implementation */
+#include "sorts.h"
 
-// Shell Sort implementation
 void shell_sort(int arr[], int size) {
     for (int gap = size / 2; gap > 0; gap /= 2) {
         for (int i = gap; i < size; ++i) {
@@ -15,5 +14,3 @@ void shell_sort(int arr[], int size) {
         }
     }
 }
-
-

@@ -1,12 +1,11 @@
-#include <sort.h>
-#include <stdio.h>
+/* heap.c - heap sort implementation */
+#include "sorts.h"
+#include <stddef.h>
 
-/* Swap helper */
 static void swap_int(int *a, int *b) {
     int t = *a; *a = *b; *b = t;
 }
 
-/* Heapify a subtree rooted at index i */
 static void heapify(int arr[], int n, int i) {
     int largest = i;
     int left = 2*i + 1;
@@ -23,7 +22,6 @@ static void heapify(int arr[], int n, int i) {
     }
 }
 
-/* Heap Sort */
 void heapSort(int arr[], int n) {
     for (int i = n/2 - 1; i >= 0; --i)
         heapify(arr, n, i);

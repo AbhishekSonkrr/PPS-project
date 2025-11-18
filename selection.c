@@ -1,5 +1,5 @@
-#include <sort.h>
-#include <stdio.h>
+/* selection.c - selection sort implementation */
+#include "sorts.h"
 
 void selectionSort(int arr[], int n) {
     for (int i = 0; i < n - 1; ++i) {

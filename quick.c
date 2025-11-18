@@ -1,9 +1,8 @@
-#include <stdio.h>
-#include <sort.h>
+/* quick.c - quick sort implementation */
+#include "sorts.h"
 
-// Partition function for Quick Sort
 static int partition(int arr[], int low, int high) {
-    int pivot = arr[high];  // choose last element as pivot
+    int pivot = arr[high];
     int i = low - 1;
 
     for (int j = low; j < high; ++j) {
@@ -16,7 +15,6 @@ static int partition(int arr[], int low, int high) {
     return i + 1;
 }
 
-// Quick Sort recursive function
 static void quickSort(int arr[], int low, int high) {
     if (low < high) {
         int pi = partition(arr, low, high);
@@ -25,7 +23,6 @@ static void quickSort(int arr[], int low, int high) {
     }
 }
 
-// Wrapper for convenience
 void quickSortWrapper(int arr[], int n) {
     if (n > 0) quickSort(arr, 0, n - 1);
 }
