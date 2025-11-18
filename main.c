@@ -1,5 +1,7 @@
-/* main.c - demo program that runs several sorting algorithms and times them
-   Easy to read and modify: each sort is in its own source file. */
+/* main.c - beginner-friendly demo for several sorting algorithms.
+   Each sort is implemented in its own file and declared in `sorts.h`.
+   This program runs each sort on three inputs: ordered, reversed and random.
+   It prints the sorted arrays and the time taken (nanoseconds). */
 
 #define _POSIX_C_SOURCE 199309L
 #include <stdio.h>
@@ -7,83 +9,66 @@
 #include <string.h>
 #include "sorts.h"
 
-/* Helper to copy and run a sort, printing time and result */
-/* Run the given sort on a copy of `src` and return elapsed nanoseconds. */
-/* Run the given sort on a copy of `src`, print the sorted result labeled by
-   `label`, and return elapsed nanoseconds. */
-static long run_sort_time_and_print(const char *label, int src[], int n, void (*sort_fn)(int[], int))
+/* Simple name for a sorting function */
+typedef void (*SortFn)(int[], int);
+
+/* time_and_print: sort a copy of `arr`, print the labeled sorted array,
+   and return elapsed time in nanoseconds. */
+static long time_and_print(const char *label, int arr[], int n, SortFn fn)
 {
     struct timespec start, end;
-    int tmp[SIZE];
+    int copy[SIZE];
 
-    memcpy(tmp, src, n * sizeof(int));
+    /* copy input so original stays unchanged */
+    memcpy(copy, arr, n * sizeof(int));
+
     clock_gettime(CLOCK_REALTIME, &start);
-    sort_fn(tmp, n);
+    fn(copy, n);
     clock_gettime(CLOCK_REALTIME, &end);
 
     printf("%s:\n", label);
-    printArray(tmp, n);
+    printArray(copy, n);
 
     return (end.tv_sec - start.tv_sec) * 1000000000L + (end.tv_nsec - start.tv_nsec);
 }
 
+/* run_test: run one sorting function on ordered, reversed and random inputs.
+   Prints the sorted arrays and a small "Time Taken" block. */
+static void run_test(const char *label, SortFn fn, int orderedArr[], int reversedArr[])
+{
+    int randomArr[SIZE];
+    printf("=== %s ===\n", label);
+
+    /* show the actual input arrays before sorting */
+    printf("Input - ordered:\n");
+    printArray(orderedArr, SIZE);
+    long t_ordered = time_and_print("ordered", orderedArr, SIZE, fn);
+
+    printf("Input - reversed:\n");
+    printArray(reversedArr, SIZE);
+    long t_reversed = time_and_print("reversed", reversedArr, SIZE, fn);
+
+    generate_random(randomArr, SIZE);
+    printf("Input - random:\n");
+    printArray(randomArr, SIZE);
+    long t_random = time_and_print("random", randomArr, SIZE, fn);
+
+    printf("Time Taken\nordered: %ld ns\nreversed: %ld ns\nrandom: %ld ns\n\n",
+           t_ordered, t_reversed, t_random);
+}
+
 int main(void)
 {
-    int base_ordered[SIZE] = {5, 6, 9, 36, 54, 80, 85, 102, 103, 104, 108};
-    int base_reverse[SIZE] = {108, 104, 103, 102, 85, 80, 54, 36, 9, 6, 5};
-    int randomArr[SIZE];
+    int orderedArr[SIZE] = {5, 6, 9, 36, 54, 80, 85, 102, 103, 104, 108};
+    int reversedArr[SIZE] = {108, 104, 103, 102, 85, 80, 54, 36, 9, 6, 5};
 
-
-
-    /* For each sort we will run on ordered, reverse and random inputs */
-
-    /* Bubble Sort */
-    printf("=== Bubble Sort ===\n");
-    long b_ord = run_sort_time_and_print("ordered", base_ordered, SIZE, bubbleSort);
-    long b_rev = run_sort_time_and_print("reversed", base_reverse, SIZE, bubbleSort);
-    generate_random(randomArr, SIZE);
-    long b_rnd = run_sort_time_and_print("random", randomArr, SIZE, bubbleSort);
-    printf("Time Taken\nordered: %ld ns\nreversed: %ld ns\nrandom: %ld ns\n\n", b_ord, b_rev, b_rnd);
-
-    /* Quick Sort */
-    printf("=== Quick Sort ===\n");
-    long q_ord = run_sort_time_and_print("ordered", base_ordered, SIZE, quickSortWrapper);
-    long q_rev = run_sort_time_and_print("reversed", base_reverse, SIZE, quickSortWrapper);
-    generate_random(randomArr, SIZE);
-    long q_rnd = run_sort_time_and_print("random", randomArr, SIZE, quickSortWrapper);
-    printf("Time Taken\nordered: %ld ns\nreversed: %ld ns\nrandom: %ld ns\n\n", q_ord, q_rev, q_rnd);
-
-    /* Heap Sort */
-    printf("=== Heap Sort ===\n");
-    long h_ord = run_sort_time_and_print("ordered", base_ordered, SIZE, heapSort);
-    long h_rev = run_sort_time_and_print("reversed", base_reverse, SIZE, heapSort);
-    generate_random(randomArr, SIZE);
-    long h_rnd = run_sort_time_and_print("random", randomArr, SIZE, heapSort);
-    printf("Time Taken\nordered: %ld ns\nreversed: %ld ns\nrandom: %ld ns\n\n", h_ord, h_rev, h_rnd);
-
-    /* Selection Sort */
-    printf("=== Selection Sort ===\n");
-    long s_ord = run_sort_time_and_print("ordered", base_ordered, SIZE, selectionSort);
-    long s_rev = run_sort_time_and_print("reversed", base_reverse, SIZE, selectionSort);
-    generate_random(randomArr, SIZE);
-    long s_rnd = run_sort_time_and_print("random", randomArr, SIZE, selectionSort);
-    printf("Time Taken\nordered: %ld ns\nreversed: %ld ns\nrandom: %ld ns\n\n", s_ord, s_rev, s_rnd);
-
-    /* Shell Sort */
-    printf("=== Shell Sort ===\n");
-    long sh_ord = run_sort_time_and_print("ordered", base_ordered, SIZE, shell_sort);
-    long sh_rev = run_sort_time_and_print("reversed", base_reverse, SIZE, shell_sort);
-    generate_random(randomArr, SIZE);
-    long sh_rnd = run_sort_time_and_print("random", randomArr, SIZE, shell_sort);
-    printf("Time Taken\nordered: %ld ns\nreversed: %ld ns\nrandom: %ld ns\n\n", sh_ord, sh_rev, sh_rnd);
-
-    /* Insertion Sort */
-    printf("=== Insertion Sort ===\n");
-    long i_ord = run_sort_time_and_print("ordered", base_ordered, SIZE, straightInsertionSort);
-    long i_rev = run_sort_time_and_print("reversed", base_reverse, SIZE, straightInsertionSort);
-    generate_random(randomArr, SIZE);
-    long i_rnd = run_sort_time_and_print("random", randomArr, SIZE, straightInsertionSort);
-    printf("Time Taken\nordered: %ld ns\nreversed: %ld ns\nrandom: %ld ns\n\n", i_ord, i_rev, i_rnd);
+    /* run tests for each sorting algorithm */
+    run_test("Bubble Sort", bubbleSort, orderedArr, reversedArr);
+    run_test("Quick Sort", quickSortWrapper, orderedArr, reversedArr);
+    run_test("Heap Sort", heapSort, orderedArr, reversedArr);
+    run_test("Selection Sort", selectionSort, orderedArr, reversedArr);
+    run_test("Shell Sort", shell_sort, orderedArr, reversedArr);
+    run_test("Insertion Sort", straightInsertionSort, orderedArr, reversedArr);
 
     return 0;
 }
